@@ -1,13 +1,10 @@
 resource "aws_lb" "alb" {
-  name               = "${var.env}-alb"
+  name               = local.name
   internal           = var.lb
   load_balancer_type = var.lb-type
   security_groups    = [aws_security_group.sg.id]
-  subnets            = [local.subnet-ids]
-
-  tags = {
-    Environment = "production"
-  }
+  subnets            = [var.subnets]
+  tags = "${var.env}-alb"
 }
 
 resource "aws_security_group" "sg" {
