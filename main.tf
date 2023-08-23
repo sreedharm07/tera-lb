@@ -8,17 +8,17 @@ resource "aws_lb" "alb" {
 }
 
 resource "aws_security_group" "sg" {
-  name        =  "${var.tags}-sg"
-  description = "${var.tags}-sg"
+  name        =  "${var.env}-sg"
+  description = "${var.env}-sg"
   vpc_id      = var.vpc_id
-tags = merge(local.tags,{Name= "${var.env}-sg}" })
+tags = merge(local.tags,{Name= "${var.env}-sg}"})
 
   ingress {
     description      = "TLS from VPC"
     from_port        = var.sg-port
     to_port          = var.sg-port
     protocol         = "tcp"
-    cidr_blocks      = [var.cidr-block]
+    cidr_blocks      = var.cidr-block
   }
 
   egress {
