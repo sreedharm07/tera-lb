@@ -3,7 +3,7 @@ resource "aws_lb" "alb" {
   internal           = var.lb
   load_balancer_type = var.lb-type
   security_groups    = [aws_security_group.sg.id]
-  subnets            = [var.subnets]
+  subnets            = var.subnets
   tags = merge(local.tags,{Name= "${var.env}-alb}" })
 }
 
