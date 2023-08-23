@@ -11,7 +11,7 @@ resource "aws_security_group" "sg" {
   name        =  "${var.env}-sg"
   description = "${var.env}-sg"
   vpc_id      = var.vpc_id
-tags = merge(local.tags,{Name= "${var.env}-sg}"})
+tags = merge(local.tags,{Name= "${var.env}-sg"})
 
   ingress {
     description      = "TLS from VPC"
