@@ -40,8 +40,8 @@ resource "aws_lb_listener" "front_end" {
 
     fixed_response {
       content_type = "text/plain"
-      message_body = "Fixed response content"
-      status_code  = "200"
+      message_body = "ERROR"
+      status_code  = "404"
     }
   }
 }
