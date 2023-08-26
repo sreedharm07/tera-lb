@@ -30,7 +30,7 @@ tags = merge(local.tags,{Name= "${var.env}-sg"})
   }
 }
 
-resource "aws_lb_listener" "front_end" {
+resource "aws_lb_listener" "main" {
   load_balancer_arn = aws_lb.alb.arn
   port              = "80"
   protocol          = "HTTP"
