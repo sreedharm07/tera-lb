@@ -6,3 +6,4 @@ variable "vpc_id" {}
 variable "cidr-block" {}
 variable "sg-port" {}
 variable "subnets" {}
+variable "certificate_arn_alb" {}
