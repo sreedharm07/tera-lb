@@ -8,7 +8,6 @@ resource "aws_lb" "alb" {
 }
 
 resource "aws_lb_listener" "main" {
-  count             = var.lb ? 0 : 1
   load_balancer_arn = aws_lb.alb.arn
   port              = var.lb ? "80" : "443"
   protocol          = var.lb ? "HTTP" : "HTTPS"
