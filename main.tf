@@ -47,4 +47,3 @@ tags = merge(local.tags,{Name= "${var.env}-sg"})
     ipv6_cidr_blocks = ["::/0"]
   }
 }
-
