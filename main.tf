@@ -47,3 +47,17 @@ tags = merge(local.tags,{Name= "${var.env}-sg"})
     ipv6_cidr_blocks = ["::/0"]
   }
 }
+
+resource "aws_lb_listener_rule" "redirect_http_to_https" {
+  listener_arn = aws_lb_listener.main.arn
+
+  action {
+    type = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
+  }
+}
