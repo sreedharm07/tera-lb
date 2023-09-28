@@ -48,10 +48,13 @@ tags = merge(local.tags,{Name= "${var.env}-sg"})
   }
 }
 
-resource "aws_lb_listener_rule" "redirect_http_to_https" {
-  listener_arn = aws_lb_listener.main.arn
+resource "aws_lb_listener" "front_end" {
+  count = var.lb ? 0 :1
+  load_balancer_arn = aws_lb.alb.arn
+  port              = "80"
+  protocol          = "HTTP"
 
-  action {
+  default_action {
     type = "redirect"
 
     redirect {
